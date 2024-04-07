@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
 namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\DB;
 
 class CRUDArticleController extends Controller
 {
@@ -23,12 +24,10 @@ class CRUDArticleController extends Controller
     { 
         //
         request()->validate([
-            'autor' => ['required', 'string', 'max:255'],
+            'descripcio' => ['required', 'string', 'max:255'],
         ]);
 
-        Article::create([
-            'descripcio' => request()->email
-        ]);
+        Article::create(["descripcio" => request()->descripcio]);
  
 
         return redirect(RouteServiceProvider::HOME);
@@ -37,7 +36,7 @@ class CRUDArticleController extends Controller
     {
         //
         request()->validate([
-            'autor' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255'],
             'descripcio' => ['required', 'string', 'max:255'],
         ]);
 
@@ -52,12 +51,10 @@ class CRUDArticleController extends Controller
     {
         //
         request()->validate([
-            'autor' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255'],
         ]);
 
-        Article::create([
-            'descripcio' => request()->email
-        ]);
+        DB::insert("INSERT INTO articles(article,id_usuario");
 
 
         return redirect(RouteServiceProvider::HOME);

@@ -30,8 +30,8 @@ class ArticleController extends Controller
     public function show()
     {
         
-        $article = Article::where('email',"=","rauldmj2134@gmail.com")->paginate(5);
-        return view('welcome',compact('article'));
+        $article = Article::latest()->paginate(5);
+        return view('dashboard',compact('article'));
     }
 
     /**

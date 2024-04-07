@@ -23,21 +23,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [ArticleController::class, 'index']);
+
 Route::get('/dashboard', [ArticleController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/insertar', function () {return view('insertar');})->name('insertar');
 Route::get('/eliminar', function () {return view('eliminar');})->name('eliminar');
 Route::get('/modificar', function () {return view('modificar');})->name('modificar');
  
-Route::post('inserir', [CRUDArticleController::class, 'store']);
+Route::post('insertar', [CRUDArticleController::class, 'store']);
 Route::post('modificar', [CRUDArticleController::class, 'update']);
 Route::post('eliminar', [CRUDArticleController::class, 'delete']);
- 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 
 require __DIR__.'/auth.php';

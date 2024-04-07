@@ -6,16 +6,16 @@
     </x-slot>
     <form method="POST" action="{{ route('insertar') }}">
         @vite('resources/css/app.css')
-
+        @csrf
         <div>
-            <x-input-label for="email" :value="__('Article')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="text" name="email"  required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-label for="descripcio" :value="__('Article')" />
+            <x-text-input id="descripcio" class="block mt-1 w-full" type="text" name="descripcio"  required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('descripcio')" class="mt-2" />
         </div>
         <div class="flex items-center justify-end mt-4">
 
             <x-primary-button class="ms-3">
-                {{ __('Inserir') }}
+                {{ __('Insertar') }}
             </x-primary-button>
         </div>
     </form>

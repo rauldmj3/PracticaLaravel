@@ -14,41 +14,15 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('titol');
-            $table->string('descripcio');
+            $table->string('descripcio',50);
+            $table->bigInteger('id_usuari')->nullable();
             $table->timestamps();
         });
+
         DB::table('articles')->insert([
-            ['titol' => 'P1', 'descripcio' => "Projecte 1"],
-            ['titol' => 'P2', 'descripcio' => "Projecte 2"],
-            ['titol' => 'P3', 'descripcio' => "Projecte 3"],
-            ['titol' => 'P4', 'descripcio' => "Projecte 4"],
-            ['titol' => 'P5', 'descripcio' => "Projecte 5"],
-            ['titol' => 'P1', 'descripcio' => "Projecte 1"],
-            ['titol' => 'P2', 'descripcio' => "Projecte 2"],
-            ['titol' => 'P3', 'descripcio' => "Projecte 3"],
-            ['titol' => 'P4', 'descripcio' => "Projecte 4"],
-            ['titol' => 'P5', 'descripcio' => "Projecte 5"],
-            ['titol' => 'P1', 'descripcio' => "Projecte 1"],
-            ['titol' => 'P2', 'descripcio' => "Projecte 2"],
-            ['titol' => 'P3', 'descripcio' => "Projecte 3"],
-            ['titol' => 'P4', 'descripcio' => "Projecte 4"],
-            ['titol' => 'P5', 'descripcio' => "Projecte 5"],
-            ['titol' => 'P1', 'descripcio' => "Projecte 1"],
-            ['titol' => 'P2', 'descripcio' => "Projecte 2"],
-            ['titol' => 'P3', 'descripcio' => "Projecte 3"],
-            ['titol' => 'P4', 'descripcio' => "Projecte 4"],
-            ['titol' => 'P5', 'descripcio' => "Projecte 5"],
-            ['titol' => 'P1', 'descripcio' => "Projecte 1"],
-            ['titol' => 'P2', 'descripcio' => "Projecte 2"],
-            ['titol' => 'P3', 'descripcio' => "Projecte 3"],
-            ['titol' => 'P4', 'descripcio' => "Projecte 4"],
-            ['titol' => 'P5', 'descripcio' => "Projecte 5"],
-            ['titol' => 'P1', 'descripcio' => "Projecte 1"],
-            ['titol' => 'P2', 'descripcio' => "Projecte 2"],
-            ['titol' => 'P3', 'descripcio' => "Projecte 3"],
-            ['titol' => 'P4', 'descripcio' => "Projecte 4"],
-            ['titol' => 'P5', 'descripcio' => "Projecte 5"],
+            ['descripcio' => 'P1', 'id_usuari' => 1],
+            ['descripcio' => 'P2', 'id_usuari' => 2],
+            ['descripcio' => 'P3', 'id_usuari' => 1],
         ]);
     }
 
@@ -57,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projectes');
+        Schema::dropIfExists('articles');
     }
 };
