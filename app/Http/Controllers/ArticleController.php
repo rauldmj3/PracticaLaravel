@@ -27,9 +27,11 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        return $id;
+        
+        $article = Article::where('email',"=","rauldmj2134@gmail.com")->paginate(5);
+        return view('welcome',compact('article'));
     }
 
     /**
