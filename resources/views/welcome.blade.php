@@ -30,27 +30,25 @@
                     @endauth
                 </div>
             @endif
-                
+            
+            @vite('resources/css/app.css')
             <div>
-                <h1 class="text-4xl font-bold tracking-tight text-black sm:text-6xl" style="padding-bottom:5%; color: white; font-size: 50px">Artículos</h1>
-                @foreach($article as $articleItem)
-                    <ul role="list" class="divide-y divide-gray-100">
-                        <li class="flex justify-between gap-x-6 py-5">
-                        <div class="flex min-w-0 gap-x-4">
-                            <div class="min-w-0 flex-auto">
-                            <p class="text-sm font-semibold leading-6 text-gray-900"><strong style="color: white">{{ $articleItem->titol }}</strong></p>
-                            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ $articleItem->descripcio }}</p>
+
+                <ul role="list" class="divide-y divide-gray-100">
+                    @forelse($article as $articleItem)
+                    <li class="flex justify-between gap-x-6 py-5" style="margin: 5%; width:100%;">
+                        <div class="flex min-w-0 gap-x-4" style="width:100%;">
+                            <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg" style="width:100%;">
+                                <p class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">{{ $articleItem->titol }} - {{ $articleItem->descripcio }} </p>
                             </div>
                         </div>
-                        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                            <p class="text-sm leading-6 text-gray-900"><a href="">{{ $articleItem->titol }}</a></p>
-                            <p class="mt-1 text-xs leading-5 text-gray-500">{{ $articleItem->descripcio }}</p>
-                        </div>
-                        </li>
-                    </ul>
-                
-                @endforeach
-            {{ $article->links() }}
+                    </li>
+                    @empty
+                    <li>No hay nignun articulo para mostrar</li> 
+                    @endforelse
+                </ul>
+
+                {{ $article->links() }}
             </div>
         </div>
     </body>
